@@ -1,21 +1,18 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { onAuthStateChanged, signInAnonymously, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../config/firebaseConfig';
+import { ClipLoader } from 'react-spinners';
 
-// Create a context for authentication
 const AuthContext = createContext();
 
-// Custom hook to use the AuthContext
 export const useAuth = () => useContext(AuthContext);
 
-// AuthProvider component
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    //unsubscribe (cancel from user)
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setLoading(false);
@@ -50,9 +47,17 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="spinner-container">
+        <ClipLoader size={50} color={"#123abc"} loading={loading} />
+      </div>
+    );
+  }
+
   return (
     <AuthContext.Provider value={{ currentUser, error, signInWithGoogle }}>
-      {!loading && children}
+      {children}
     </AuthContext.Provider>
   );
 };
