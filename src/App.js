@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Header from './components/Header';
 import Chatbot from './components/Chatbot';
 import Auth from './components/FirebaseLogin';
-import { AuthProvider } from './context/AuthProvider';
-import ProtectedRoute from './routes/ProtectedRoute';
+import AuthProvider from './context/AuthProvider';
 
 const App = () => {
   return (
@@ -13,14 +12,7 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Navigate to="/login" />} />
-          <Route
-            path="/chatbot"
-            element={
-              <ProtectedRoute>
-                <Chatbot />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/chatbot" element={<Chatbot />} /> {/* Chatbot page accessible */}
           <Route path="/login" element={<Auth />} />
         </Routes>
       </Router>

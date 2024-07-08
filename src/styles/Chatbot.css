@@ -1,0 +1,90 @@
+body {
+    background-color: #333;}
+  
+  .container-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 30px;
+  }
+  
+  .conversation-history {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .conversation-entry {
+    margin: 10px 0;
+  }
+  
+  .card {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    align-items: inherit;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+  
+  .user-response, .chatbot-response {
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-response {
+    background-color: lightgray;
+  }
+  
+  .chatbot-response {
+    background-color: rgb(55, 57, 58);
+    color: white;
+  }
+  
+  .icon {
+    margin-right: 10px;
+    font-size: 20px;
+    animation: fadeIn 1s ease;
+  }
+  
+  .error-border {
+    border-color: red;
+  }
+  
+  .search-icon {
+    color: white;
+    margin-left: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .user-input {
+    display: flex;
+    align-items: center;
+    width: 45%; /* Adjust the width of the container */
+    padding: 10px;
+    font-size: 16px;
+  }
+  .wider-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
