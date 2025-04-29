@@ -1,90 +1,137 @@
-body {
-    background-color: #333;}
-  
-  .container-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    gap: 30px;
-  }
-  
-  .conversation-history {
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-  }
-  
-  .conversation-entry {
-    margin: 10px 0;
-  }
-  
-  .card {
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    align-items: inherit;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  }
-  
-  .user-response, .chatbot-response {
-    padding: 10px;
-    border-radius: 10px;
-    margin: 5px 0;
-    display: flex;
-    align-items: center;
-  }
-  
-  .user-response {
-    background-color: lightgray;
-  }
-  
-  .chatbot-response {
-    background-color: rgb(55, 57, 58);
-    color: white;
-  }
-  
-  .icon {
-    margin-right: 10px;
-    font-size: 20px;
-    animation: fadeIn 1s ease;
-  }
-  
-  .error-border {
-    border-color: red;
-  }
-  
-  .search-icon {
-    color: white;
-    margin-left: 10px;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  .user-input {
-    display: flex;
-    align-items: center;
-    width: 45%; /* Adjust the width of the container */
-    padding: 10px;
-    font-size: 16px;
-  }
-  .wider-input {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+html, body {
+  height: auto;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #0e0d0ddf;
+  font-family: Arial, sans-serif;
+}
+.chat-background::before {
+  content: '\f544';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 300px;
+  color: #ffffff;
+  opacity: 0.06;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.chat-background {
+  position: relative;
+  z-index: 1;
+}
+.container-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 100px; /* Ensures content isn't hidden behind input */
+  box-sizing: border-box;
+}
+.conversation-history {
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* maintain bottom-up stacking */
+  min-height: 100vh;
+
+  /* Add safe padding on top and bottom for scrolling focus */
+  padding-top: 50vh; /* enough top padding to center oldest messages */
+  padding-bottom: 35vh; /* keeps newest message stable at desired position */
+}
+
+.conversation-entry {
+  margin: 15px 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: scale(0.95);
+  opacity: 0.7;
+}
+/* Apply to focused entry */
+.conversation-entry.focused {
+  transform: scale(1.15);
+  opacity: 1;
+}
+.conversation-entry.focused .card {
+  box-shadow: 0 0 15px rgba(244, 243, 247, 0.44);
+}
+
+.card {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-response {
+  background-color: #d1d5db;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.chatbot-response {
+  background-color: #37393a;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.user-input {
+  position: fixed;
+  bottom: 60px; /* instead of 0, lifts it upward */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 600px;
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+}
+
+.user-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+.search-icon {
+  margin-left: 10px;
+  font-size: 20px;
+  color: rgb(228, 199, 10);
+  cursor: pointer;
+}
+
+.icon {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.error-border {
+  border: 1px solid red;
+}
+.login-button-container {
+  position: fixed;
+  bottom: 10px; /* Distance from bottom of screen */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  z-index: 99;
+  padding-bottom: 5px;
+}
