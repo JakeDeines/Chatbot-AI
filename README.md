@@ -24,6 +24,9 @@ A clean, responsive AI chatbot web application powered by AWS Amplify Authentica
 
 ### 💬 Chat Actions
 
+#### Search Prompt
+![Chat Search](./assets/Chatbot_chat_search.png)
+
 #### Prompt Example 1
 ![Chat Action 1](./assets/Chatbot_chat_action1.png)
 
@@ -33,8 +36,6 @@ A clean, responsive AI chatbot web application powered by AWS Amplify Authentica
 #### Prompt Example 3
 ![Chat Action 3](./assets/Chatbot_chat_action3.png)
 
-#### Search Prompt
-![Chat Search](./assets/Chatbot_chat_search.png)
 
 ---
 
