@@ -43,8 +43,8 @@ A clean, responsive AI chatbot web application powered by AWS Amplify Authentica
 
 - **React.js**
 - **AWS Amplify** (Authentication & UI components)
-- **TailwindCSS**
-- **OpenAI GPT-4 API**
+- **Custom CSS**
+- **OpenAI API**
 
 ---
 
