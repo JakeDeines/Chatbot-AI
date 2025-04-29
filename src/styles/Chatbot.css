@@ -109,7 +109,15 @@ html, body {
   border: none;
   font-size: 16px;
 }
-
+.search-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
 .search-icon {
   margin-left: 10px;
   font-size: 20px;
@@ -121,6 +129,13 @@ html, body {
   margin-right: 10px;
   font-size: 20px;
 }
+.error-message {
+  color: #ff4d4d;
+  font-size: 0.95rem;
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
 
 .error-border {
   border: 1px solid red;
@@ -134,4 +149,29 @@ html, body {
   justify-content: center;
   z-index: 99;
   padding-bottom: 5px;
+}
+@media (max-width: 768px) {
+  .container-center {
+    padding: 1rem;
+  }
+
+  .user-input {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+  }
+
+  .user-input input {
+    width: 80%;
+    font-size: 16px;
+  }
+
+  .search-button {
+    margin-left: 8px;
+  }
+
+  .conversation-history {
+    padding: 0.5rem;
+  }
 }

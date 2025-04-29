@@ -18,8 +18,8 @@ const Chatbot = () => {
   useEffect(() => {
     const options = {
       root: null,
-      rootMargin: '-45% 0px -45% 0px', // Even tighter margin vertically
-      threshold: 0, // Trigger as soon as intersection occurs within margins
+      rootMargin: '-45% 0px -45% 0px',
+      threshold: 0,
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -41,7 +41,7 @@ const Chatbot = () => {
 
   const askQuestion = async () => {
     if (!userQuestion.trim()) {
-      setError('Please enter a question.');
+      setError('Please ask me a question to begin.');
       return;
     }
 
@@ -77,12 +77,13 @@ const Chatbot = () => {
     }
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') askQuestion();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    askQuestion();
   };
 
   return (
-    <div className="chat-background"> {/* NEW WRAPPER HERE */}
+    <div className="chat-background">
       <div className="container-center">
         <div className="conversation-history">
           {conversation.map((entry, index) => (
@@ -105,8 +106,8 @@ const Chatbot = () => {
           ))}
           <div ref={conversationEndRef} />
         </div>
-  
-        <div className="user-input">
+
+        <form className="user-input" onSubmit={handleSubmit}>
           <input
             type="text"
             value={userQuestion}
@@ -114,24 +115,28 @@ const Chatbot = () => {
               setUserQuestion(e.target.value);
               if (error) setError('');
             }}
-            onKeyDown={handleKeyDown}
-            placeholder={error || 'Type your question here...'}
+            placeholder="Type your question here..."
             className={error ? 'error-border' : ''}
           />
-          <FontAwesomeIcon
-            icon={faSearch}
-            className="search-icon"
-            onClick={askQuestion}
-          />
-        </div>
-  
+          <button type="submit" className="search-button">
+            <FontAwesomeIcon icon={faSearch} className="search-icon" />
+          </button>
+        </form>
+
+        {/*  NEW: Show visible error message under input */}
+        {error && (
+          <div className="error-message">
+            {error}
+          </div>
+        )}
+
         <div className="login-button-container">
           <a href="/login" className="guest-link">
             ← Return to Login
           </a>
         </div>
       </div>
-    </div> /* CLOSE NEW WRAPPER HERE */
+    </div>
   );
 };
 

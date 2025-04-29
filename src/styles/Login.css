@@ -1,149 +1,169 @@
 /* ----- General Layout ----- */
 .login-page {
-    height: 100vh;
-    overflow: hidden; /* Only hide overflow on login page */
-  }
-  
-  /* Left-side container - Deep Blue Background with Gradient */
-  .welcome-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center vertically */
-    align-items: flex-start; /* Align text left on large screens */
-    height: 100vh;
-    width: 100%;
-    padding-left: 10%;
-    background: linear-gradient(to right, #046b82, #047d95);
-  }
-  
-  /* Styling for the H1 title */
-  .welcome-container h1 {
-    color: #ffcc00;
-    font-weight: 600;
-    font-size: 2rem;
-    letter-spacing: 0.5px;
-  }
-  
-  /* Styling for the paragraph */
-  .welcome-container p {
-    color: #ffffff;
-    font-weight: 400;
-    font-size: 1.1rem;
-    letter-spacing: 0.3px;
-    max-width: 75%;
-  }
-  
-  /* Gradient border fix (optional) */
-  .gradient-border {
-    background: linear-gradient(to right, #046b82 45%, rgba(4, 125, 149, 1) 50%);
-  }
-  
-  /* Right Side Container - Lock full height */
-  .auth-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 45vw;
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-color: #1e1e1e;
-    padding: 0;
-    overflow: hidden;
-  }
-  
-  /* Amplify Authenticator Component Styling */
-  .auth-container .amplify-authenticator {
-    width: 80% !important;
-    max-width: 400px !important;
-    height: 100vh !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    margin: 0 auto;
-    padding: 0 !important;
-    background-color: transparent !important;
-  }
-  
-  /* Amplify Container Fix */
-  .auth-container .amplify-container {
-    height: 100vh !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent !important;
-  }
-  
-  /* Amplify Button Styling */
-  .amplify-button {
-    background-color: #047d95 !important;
-    border: 2px solid #ffcc00 !important;
-    color: #ffffff !important;
-    font-weight: 600 !important;
-  }
-  .amplify-button:hover {
-    background-color: #0599b3 !important;
-  }
-  
-  /* Amplify Label Styling */
-  .amplify-label {
-    color: #ffcc00 !important;
-    font-weight: 500 !important;
-  }
-  
-  /* Guest Link Styling */
-  .guest-link {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    color: #ffcc00;
-    text-decoration: none;
-    border: 2px solid #ffcc00;
-    border-radius: 6px;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  /* Guest Link Hover */
-  .guest-link:hover {
-    background-color: #ffcc00;
-    color: #121212;
-  }
-  
-  /* --------- Mobile & Tablet Responsive Tweaks --------- */
+  height: 100vh;
+  overflow: hidden; /* Only hide overflow on login page */
+}
+
+/* Left-side container - Deep Blue Background with Gradient */
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: flex-start; /* Align text left on large screens */
+  height: 100vh;
+  width: 100%;
+  padding-left: 10%;
+  background: linear-gradient(to right, #046b82, #047d95);
+}
+
+/* Styling for the H1 title */
+.welcome-container h1 {
+  color: #ffcc00;
+  font-weight: 600;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+}
+
+/* Styling for the paragraph */
+.welcome-container p {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: 0.3px;
+  max-width: 75%;
+}
+
+/* Gradient border fix */
+.gradient-border {
+  background: linear-gradient(to right, #046b82 45%, rgba(4, 125, 149, 1) 50%);
+}
+
+/* Right-side container - Lock full height */
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 45vw;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #1e1e1e;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Amplify Authenticator Component Styling */
+.auth-container .amplify-authenticator {
+  width: 80% !important;
+  max-width: 400px !important;
+  height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 auto;
+  padding: 0 !important;
+  background-color: transparent !important;
+}
+
+/* Amplify Container Fix */
+.auth-container .amplify-container {
+  height: 100vh !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent !important;
+}
+
+/* Amplify Button Styling */
+.amplify-button {
+  background-color: #047d95 !important;
+  border: 2px solid #ffcc00 !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+.amplify-button:hover {
+  background-color: #0599b3 !important;
+}
+
+/* Amplify Label Styling */
+.amplify-label {
+  color: #ffcc00 !important;
+  font-weight: 500 !important;
+}
+
+/* Guest Link Styling (used on both Login and Chatbot pages) */
+.guest-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  color: #ffcc00;
+  text-decoration: none;
+  border: 2px solid #ffcc00;
+  border-radius: 6px;
+  transition: all 0.3s ease-in-out;
+  background-color: transparent;
+}
+
+.guest-link:hover {
+  background-color: #ffcc00;
+  color: #121212;
+}
+
+/* --------- Mobile & Tablet Responsive Tweaks --------- */
 @media (max-width: 1024px) {
-    .welcome-container {
-      height: auto;
-      width: 100%;
-      padding: 2rem;
-      align-items: center;
-      text-align: center;
-      padding-left: 0;
-    }
-  
-    .welcome-container h1 {
-      font-size: 1.8rem;
-    }
-  
-    .welcome-container p {
-      font-size: 1rem;
-      max-width: 90%;
-    }
-  
-    .auth-container {
-      position: relative;
-      width: 100%;
-      height: auto;
-      padding: 2rem 0;
-      background-color: #1e1e1e;
-    }
-  
-    .auth-container .amplify-authenticator {
-      width: 90% !important;
-      height: auto !important;
-    }
+  .login-page {
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
   }
+
+  .welcome-container {
+    height: auto;
+    width: 100%;
+    padding: 2rem 1rem;
+    align-items: center;
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .welcome-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .welcome-container p {
+    font-size: 1rem;
+    max-width: 90%;
+    margin-bottom: 1.5rem;
+  }
+
+  .auth-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 2rem 0;
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .auth-container .amplify-authenticator {
+    width: 90% !important;
+    max-width: 400px;
+    height: auto !important;
+    background-color: transparent !important;
+    padding: 0;
+  }
+
+  .guest-link {
+    font-size: 1rem;
+    padding: 8px 16px;
+    margin-top: 1.5rem; /* extra spacing for mobile */
+  }
+}
