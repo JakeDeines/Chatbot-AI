@@ -1,7 +1,7 @@
 import React from 'react';
 import { Authenticator, ThemeProvider } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import '../styles/Login.css';
+import '../styles/Login.css'; // Make sure this path is correct for you
 
 const customTheme = {
   name: 'custom-theme',
@@ -38,23 +38,23 @@ const customTheme = {
 const Login = () => {
   return (
     <ThemeProvider theme={customTheme}>
-      <div className="flex h-screen overflow-hidden">
+     <div className="login-page flex flex-col lg:flex-row h-screen overflow-hidden">
         
-      <div className="login-page flex h-screen overflow-hidden">
-  <div className="w-1/2 welcome-container gradient-border">
-    <h1 className="text-4xl font-bold mb-4">Welcome to Your Chatbot!</h1>
-    <p className="text-lg text-gray-400">
-      Seamless conversations, powered by AI. Log in to get started!
-    </p>
-    <a href="/chatbot" className="guest-link">
-      Continue as Guest →
-    </a>
-  </div>
+        {/* Welcome Section */}
+        <div className="welcome-container gradient-border p-6 flex flex-col justify-center">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">Welcome to Your Chatbot!</h1>
+          <p className="text-base md:text-lg text-gray-400 mb-6">
+            Seamless conversations, powered by AI. Log in to get started!
+          </p>
+          <a href="/chatbot" className="guest-link">
+            Continue as Guest →
+          </a>
+        </div>
 
-  <div className="w-1/2 auth-container">
-    <Authenticator />
-  </div>
-</div>
+        {/* Authenticator Section */}
+        <div className="auth-container p-6 flex items-center justify-center">
+          <Authenticator />
+        </div>
 
       </div>
     </ThemeProvider>
