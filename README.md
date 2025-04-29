@@ -1,16 +1,23 @@
 # 🤖 Chatbot-AI
 
-A clean, responsive AI chatbot web application powered by AWS Amplify Authentication and OpenAI API integration.
+A sleek, responsive AI chatbot web application built with React, AWS Amplify for authentication, and OpenAI for real-time AI responses. Designed with a clean, Amazon-inspired UI and optimized for both desktop and mobile use.
+
+---
+
+## 🌐 Live Demo
+
+👉 [View the deployed app](https://main.d3aa51l1wq81s7.amplifyapp.com)
+
 
 ---
 
 ## ✨ Features
 
-- 🔐 User authentication via AWS Amplify
-- 🤖 OpenAI-powered chatbot with real-time responses
-- 💬 Clean, Amazon-inspired UI
-- 📱 Fully responsive layout (mobile + desktop)
-- 🧠 Easily customizable themes and actions
+- 🔐 Secure user login via AWS Amplify
+- 🤖 Real-time AI chat using OpenAI API
+- 💬 Amazon-style dark UI with gold accent theme
+- 📱 Fully responsive on mobile and desktop
+- 🧠 Modular layout and easily expandable features
 
 ---
 
@@ -22,7 +29,7 @@ A clean, responsive AI chatbot web application powered by AWS Amplify Authentica
 ### 📱 Login Page (Mobile)
 ![Login Mobile](./assets/Chatbot_login_mobile.png)
 
-### 💬 Chat Actions
+### 💬 Chat Examples
 
 #### Search Prompt
 ![Chat Search](./assets/Chatbot_chat_search.png)
@@ -36,24 +43,21 @@ A clean, responsive AI chatbot web application powered by AWS Amplify Authentica
 #### Prompt Example 3
 ![Chat Action 3](./assets/Chatbot_chat_action3.png)
 
-
 ---
 
 ## 🛠 Tech Stack
 
 - **React.js**
-- **AWS Amplify** (Authentication & UI components)
+- **AWS Amplify** – Authentication & Hosting
 - **Custom CSS**
-- **OpenAI API**
+- **OpenAI Chat API**
 
 ---
 
-## 🚀 Getting Started
-
-Clone the project and run locally:
+## 🚀 Getting Started Locally
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/chatbot-ai.git
+git clone https://github.com/JakeDeines/Chatbot-AI.git
 cd chatbot-ai
 npm install
 npm start
