@@ -38,24 +38,25 @@ const customTheme = {
 const Login = () => {
   return (
     <ThemeProvider theme={customTheme}>
-     <div className="login-page flex flex-col lg:flex-row h-screen overflow-hidden">
+      <div className="login-page flex flex-col lg:flex-row h-screen overflow-hidden">
         
         {/* Welcome Section */}
-        <div className="welcome-container gradient-border p-6 flex flex-col justify-center">
+        <div className="welcome-container gradient-border p-6 flex flex-col justify-center items-center text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">Welcome to Your Chatbot!</h1>
-          <p className="text-base md:text-lg text-gray-400 mb-6">
+          <p className="text-base md:text-lg text-gray-300 mb-6">
             Seamless conversations, powered by AI. Log in to get started!
           </p>
-          <a href="/chatbot" className="guest-link">
-            Continue as Guest →
-          </a>
+          <a href="/chatbot" className="guest-link">Continue as Guest →</a>
+  
+          {/* Mobile-Only Login Arrow */}
+          <a href="#login-section" className="mobile-login-arrow">Login ↓</a>
         </div>
-
+  
         {/* Authenticator Section */}
-        <div className="auth-container p-6 flex items-center justify-center">
+        <div className="auth-container p-6 flex items-center justify-center" id="login-section">
           <Authenticator />
         </div>
-
+  
       </div>
     </ThemeProvider>
   );

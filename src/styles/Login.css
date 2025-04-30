@@ -113,22 +113,42 @@
   background-color: #ffcc00;
   color: #121212;
 }
+.mobile-login-arrow {
+  display: none;
+  margin-top: 12px;
+  font-size: 1.1rem;
+  color: #ffcc00;
+  text-decoration: none;
+  border: 2px solid #ffcc00;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.mobile-login-arrow:hover {
+  background-color: #ffcc00;
+  color: #121212;
+}
 
 /* --------- Mobile & Tablet Responsive Tweaks --------- */
-@media (max-width: 1024px) {
+@media (max-width: 480px) {
   .login-page {
+    flex-direction: column;
+    height: auto;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .welcome-container {
+    padding: 2.5rem 1rem;
+    min-height: 220px;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-  }
-
-  .welcome-container {
-    height: auto;
-    width: 100%;
-    padding: 2rem 1rem;
+    justify-content: center;
     align-items: center;
     text-align: center;
-    padding-left: 0;
+    background: linear-gradient(to right, #007b8a, #008c9e);
+    color: gold;
   }
 
   .welcome-container h1 {
@@ -144,13 +164,13 @@
   .auth-container {
     position: relative;
     width: 100%;
+    min-height: 100vh;
+    padding: 2rem 1rem;
     background-color: #1e1e1e;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem 1rem;
     box-sizing: border-box;
-    flex: 1;
   }
 
   .auth-container .amplify-authenticator {
@@ -166,4 +186,26 @@
     padding: 8px 16px;
     margin-top: 1.5rem; /* extra spacing for mobile */
   }
+  .mobile-login-arrow {
+    display: inline-block;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    background-color: transparent;
+    color: #ffcc00;
+    text-decoration: none;
+    border: 2px solid #ffcc00;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+
+  .mobile-login-arrow:hover {
+    background-color: #ffcc00;
+    color: #121212;
+  }
+  
 }
