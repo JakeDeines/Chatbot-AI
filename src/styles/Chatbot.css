@@ -1,3 +1,4 @@
+/* ===== General Setup ===== */
 html, body {
   height: auto;
   min-height: 100vh;
@@ -5,7 +6,10 @@ html, body {
   padding: 0;
   background: #0e0d0ddf;
   font-family: Arial, sans-serif;
+  overflow-x: hidden;
 }
+
+/* ===== Background Icon ===== */
 .chat-background::before {
   content: '\f544';
   font-family: 'Font Awesome 6 Free';
@@ -18,34 +22,43 @@ html, body {
   color: #ffffff;
   opacity: 0.06;
   z-index: 0;
-  pointer-events: none;
 }
 
 .chat-background {
   position: relative;
   z-index: 1;
+  background-color: #0e0d0ddf;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
+
+/* ===== Layout Container ===== */
 .container-center {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding-bottom: 100px; /* Ensures content isn't hidden behind input */
+  padding-bottom: 120px;
   box-sizing: border-box;
+  background-color: transparent;
 }
+
+/* ===== Conversation History ===== */
 .conversation-history {
   width: 100%;
   max-width: 600px;
-  box-sizing: border-box;
-
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* maintain bottom-up stacking */
+  justify-content: flex-end;
   min-height: 100vh;
+  padding-top: 50vh;
+  padding-bottom: 35vh;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
 
-  /* Add safe padding on top and bottom for scrolling focus */
-  padding-top: 50vh; /* enough top padding to center oldest messages */
-  padding-bottom: 35vh; /* keeps newest message stable at desired position */
+.conversation-history > .conversation-entry:last-child {
+  margin-bottom: 0;
 }
 
 .conversation-entry {
@@ -53,12 +66,18 @@ html, body {
   transition: transform 0.3s ease, opacity 0.3s ease;
   transform: scale(0.95);
   opacity: 0.7;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
 }
-/* Apply to focused entry */
+
 .conversation-entry.focused {
   transform: scale(1.15);
   opacity: 1;
+  transform-origin: center center;
 }
+
 .conversation-entry.focused .card {
   box-shadow: 0 0 15px rgba(244, 243, 247, 0.44);
 }
@@ -68,8 +87,15 @@ html, body {
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 360px;
+  width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: hidden;
 }
 
+/* ===== Message Bubbles ===== */
 .user-response {
   background-color: #d1d5db;
   padding: 10px;
@@ -88,18 +114,22 @@ html, body {
   align-items: center;
 }
 
+/* ===== Input Area ===== */
 .user-input {
   position: fixed;
-  bottom: 60px; /* instead of 0, lifts it upward */
+  bottom: 90px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   max-width: 600px;
-  padding: 30px;
-  box-sizing: border-box;
+  padding: 12px;
   display: flex;
   align-items: center;
   z-index: 100;
+  box-sizing: border-box;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .user-input input {
@@ -108,27 +138,41 @@ html, body {
   border-radius: 5px;
   border: none;
   font-size: 16px;
+  background-color: white;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
 }
+
+.user-input input:focus {
+  outline: none;
+  box-shadow: 0 0 4px #ffcc00;
+}
+
 .search-button {
   background: none;
   border: none;
-  padding: 0;
   margin-left: 10px;
+  padding: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
 }
+
 .search-icon {
-  margin-left: 10px;
   font-size: 20px;
   color: rgb(228, 199, 10);
   cursor: pointer;
 }
 
+/* ===== Icons ===== */
 .icon {
   margin-right: 10px;
   font-size: 20px;
 }
+
+/* ===== Error Message ===== */
 .error-message {
   color: #ff4d4d;
   font-size: 0.95rem;
@@ -136,35 +180,33 @@ html, body {
   text-align: center;
 }
 
-
 .error-border {
   border: 1px solid red;
 }
+
+/* ===== Return Button ===== */
 .login-button-container {
   position: fixed;
-  bottom: 10px; /* Distance from bottom of screen */
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
   z-index: 99;
-  padding-bottom: 5px;
+  padding-bottom: 0;
+  pointer-events: auto;
 }
+
+/* ===== Responsive Tweaks ===== */
 @media (max-width: 768px) {
   .container-center {
     padding: 1rem;
+    padding-bottom: 5rem;
   }
 
   .user-input {
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
-  }
-
-  .user-input input {
-    width: 80%;
-    font-size: 16px;
+    bottom: 60px;
+    padding: 30px;
   }
 
   .search-button {
@@ -172,6 +214,16 @@ html, body {
   }
 
   .conversation-history {
-    padding: 0.5rem;
+    padding-top: 30vh;
+    padding-bottom: 25vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 85%;
+    max-width: 360px;
   }
 }

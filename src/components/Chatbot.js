@@ -118,9 +118,10 @@ const Chatbot = () => {
             placeholder="Type your question here..."
             className={error ? 'error-border' : ''}
           />
-          <button type="submit" className="search-button">
-            <FontAwesomeIcon icon={faSearch} className="search-icon" />
-          </button>
+         <button type="submit" className="search-button" aria-label="Submit Question">
+  <FontAwesomeIcon icon={faSearch} className="search-icon" />
+</button>
+
         </form>
 
         {/*  NEW: Show visible error message under input */}
