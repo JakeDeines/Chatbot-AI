@@ -1,8 +1,10 @@
+// Chatbot.js (top part unchanged)
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import '../styles/Chatbot.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faUser, faRobot } from '@fortawesome/free-solid-svg-icons';
+import { useAuthenticator } from '@aws-amplify/ui-react';
 
 const Chatbot = () => {
   const [userQuestion, setUserQuestion] = useState('');
@@ -10,50 +12,45 @@ const Chatbot = () => {
   const [error, setError] = useState('');
   const conversationEndRef = useRef(null);
   const messageRefs = useRef([]);
+  const { signOut, user } = useAuthenticator((context) => [context.user]);
 
+  // Scroll to bottom on new message
   useEffect(() => {
     conversationEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [conversation]);
 
+  // Intersection Observer...
   useEffect(() => {
     const options = {
       root: null,
       rootMargin: '-45% 0px -45% 0px',
       threshold: 0,
     };
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         entry.target.classList.toggle('focused', entry.isIntersecting);
       });
     }, options);
 
-    messageRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
+    const currentRefs = [...messageRefs.current];
+    currentRefs.forEach((ref) => ref && observer.observe(ref));
 
     return () => {
-      messageRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
+      currentRefs.forEach((ref) => ref && observer.unobserve(ref));
     };
   }, [conversation]);
 
   const askQuestion = async () => {
     if (!userQuestion.trim()) {
-      setError('Please ask me a question to begin.');
+      setError('Please enter a question.');
       return;
     }
-
     setError('');
-
     try {
       const conversationHistory = conversation
         .map((entry) => `User: ${entry.user}\nChatbot: ${entry.chatbot}`)
         .join('\n');
-
       const prompt = `${conversationHistory}\nUser: ${userQuestion}\nChatbot:`;
-
       const openaiResponse = await axios.post(
         'https://api.openai.com/v1/engines/gpt-3.5-turbo-instruct/completions',
         { prompt, max_tokens: 200 },
@@ -64,9 +61,7 @@ const Chatbot = () => {
           },
         }
       );
-
       const chatbotResponse = openaiResponse.data.choices[0].text.trim();
-
       setConversation((prev) => [
         ...prev,
         { user: userQuestion, chatbot: chatbotResponse },
@@ -77,13 +72,19 @@ const Chatbot = () => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    askQuestion();
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') askQuestion();
   };
 
   return (
     <div className="chat-background">
+      {/* Sticky Sign Out Button */}
+      {user && (
+        <div className="sticky-signout">
+          <button onClick={signOut}>Sign Out</button>
+        </div>
+      )}
+
       <div className="container-center">
         <div className="conversation-history">
           {conversation.map((entry, index) => (
@@ -107,7 +108,7 @@ const Chatbot = () => {
           <div ref={conversationEndRef} />
         </div>
 
-        <form className="user-input" onSubmit={handleSubmit}>
+        <div className="user-input">
           <input
             type="text"
             value={userQuestion}
@@ -115,27 +116,24 @@ const Chatbot = () => {
               setUserQuestion(e.target.value);
               if (error) setError('');
             }}
-            placeholder="Type your question here..."
+            onKeyDown={handleKeyDown}
+            placeholder={error || 'Type your question here...'}
             className={error ? 'error-border' : ''}
           />
-         <button type="submit" className="search-button" aria-label="Submit Question">
-  <FontAwesomeIcon icon={faSearch} className="search-icon" />
-</button>
+          <FontAwesomeIcon
+            icon={faSearch}
+            className="search-icon"
+            onClick={askQuestion}
+          />
+        </div>
 
-        </form>
-
-        {/*  NEW: Show visible error message under input */}
-        {error && (
-          <div className="error-message">
-            {error}
+        {!user && (
+          <div className="login-button-container">
+            <a href="/login" className="guest-link">
+              ← Return to Login
+            </a>
           </div>
         )}
-
-        <div className="login-button-container">
-          <a href="/login" className="guest-link">
-            ← Return to Login
-          </a>
-        </div>
       </div>
     </div>
   );

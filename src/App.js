@@ -1,22 +1,20 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import AuthProvider from "./context/AWSAuthProvider"; // ✅ Update this to match the export
+import { Authenticator } from '@aws-amplify/ui-react'; // ✅ Import provider
 import Chatbot from './components/Chatbot';
 import Login from './components/Login';
-import ProtectedRoute from './routes/ProtectedRoute';
-
 
 const App = () => {
   return (
-    <AuthProvider>
+    <Authenticator.Provider> {/* ✅ Wrap entire app */}
       <Router>
         <Routes>
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/chatbot" element={<Chatbot />}/>
+          <Route path="/chatbot" element={<Chatbot />} />
         </Routes>
       </Router>
-    </AuthProvider>
+    </Authenticator.Provider>
   );
 };
 

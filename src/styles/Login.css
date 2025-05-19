@@ -35,7 +35,7 @@
 
 /* Gradient border fix */
 .gradient-border {
-  background: linear-gradient(to right, #046b82 45%, rgba(4, 125, 149, 1) 50%);
+  background: linear-gradient(to right, #046b82 45%, rgba(4, 125, 149, 0.945) 50%);
 }
 
 /* Right-side container - Lock full height */

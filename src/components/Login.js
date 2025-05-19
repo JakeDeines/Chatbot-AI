@@ -1,15 +1,18 @@
-import React from 'react';
-import { Authenticator, ThemeProvider } from '@aws-amplify/ui-react';
+// src/components/Login.js
+
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Authenticator, ThemeProvider, useAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import '../styles/Login.css'; // Make sure this path is correct for you
+import '../styles/Login.css';
 
 const customTheme = {
   name: 'custom-theme',
   tokens: {
     colors: {
       background: { primary: '#121212' },
-      brand: { primary: { '10': '#ffcc00' } },
       font: { primary: '#ffffff', secondary: '#aaaaaa' },
+      brand: { primary: { '10': '#ffcc00' } },
     },
     components: {
       authenticator: {
@@ -35,31 +38,41 @@ const customTheme = {
   },
 };
 
-const Login = () => {
+const LoginScreen = () => {
+  const { user } = useAuthenticator((context) => [context.user]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate('/chatbot');
+    }
+  }, [user, navigate]);
+
   return (
-    <ThemeProvider theme={customTheme}>
-      <div className="login-page flex flex-col lg:flex-row h-screen overflow-hidden">
-        
-        {/* Welcome Section */}
-        <div className="welcome-container gradient-border p-6 flex flex-col justify-center items-center text-center">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">Welcome to Your Chatbot!</h1>
-          <p className="text-base md:text-lg text-gray-300 mb-6">
-            Seamless conversations, powered by AI. Log in to get started!
-          </p>
-          <a href="/chatbot" className="guest-link">Continue as Guest →</a>
-  
-          {/* Mobile-Only Login Arrow */}
-          <a href="#login-section" className="mobile-login-arrow">Login ↓</a>
-        </div>
-  
-        {/* Authenticator Section */}
-        <div className="auth-container p-6 flex items-center justify-center" id="login-section">
-          <Authenticator />
-        </div>
-  
+    <div className="login-page flex h-screen overflow-hidden">
+      <div className="w-1/2 welcome-container gradient-border">
+        <h1 className="text-4xl font-bold mb-4">Welcome to Your Chatbot!</h1>
+        <p className="text-lg text-gray-400">
+          Seamless conversations, powered by AI. Log in to get started!
+        </p>
+        <a href="/chatbot" className="guest-link">
+          Continue as Guest →
+        </a>
       </div>
-    </ThemeProvider>
+
+      <div className="w-1/2 auth-container">
+        <Authenticator />
+      </div>
+    </div>
   );
 };
+
+const Login = () => (
+  <ThemeProvider theme={customTheme}>
+    <Authenticator.Provider>
+      <LoginScreen />
+    </Authenticator.Provider>
+  </ThemeProvider>
+);
 
 export default Login;

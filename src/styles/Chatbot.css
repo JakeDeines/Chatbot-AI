@@ -164,6 +164,7 @@ html, body {
   font-size: 20px;
   color: rgb(228, 199, 10);
   cursor: pointer;
+  margin-left: 12px;
 }
 
 /* ===== Icons ===== */
@@ -196,7 +197,34 @@ html, body {
   padding-bottom: 0;
   pointer-events: auto;
 }
+.top-bar {
+  position: sticky;
+  top: 0;
+  background-color: #121212;
+  padding: 10px 20px;
+  z-index: 10;
+  text-align: right;
+}
+.sticky-signout {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  z-index: 100;
+}
 
+.sticky-signout button {
+  background-color: #ffcc00;
+  color: #121212;
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.sticky-signout button:hover {
+  background-color: #ffdd44;
+}
 /* ===== Responsive Tweaks ===== */
 @media (max-width: 768px) {
   .container-center {
