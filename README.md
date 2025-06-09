@@ -1,8 +1,9 @@
 # 🤖 Chatbot-AI
 
-![Deploy Status](https://img.shields.io/github/deployments/JakeDeines/Chatbot-AI/production?label=amplify%20deploy&logo=aws-amplify&style=flat-square)
-![GitHub Repo Stars](https://img.shields.io/github/stars/JakeDeines/Chatbot-AI?style=flat-square)
-![GitHub License](https://img.shields.io/github/license/JakeDeines/Chatbot-AI?style=flat-square)
+![Amplify Deploy](https://img.shields.io/github/deployments/JakeDeines/Chatbot-AI/production?label=Amplify%20Deploy&logo=aws-amplify&style=for-the-badge)
+![Stars](https://img.shields.io/github/stars/JakeDeines/Chatbot-AI?style=for-the-badge&logo=github)
+![Built with React](https://img.shields.io/badge/Built%20with-React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![Powered by OpenAI](https://img.shields.io/badge/Powered%20by-OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
 
 ## Overview
 A sleek, responsive AI chatbot web application built with React, AWS Amplify for authentication, and OpenAI for real-time AI responses. Designed with a clean, Amazon-inspired UI and optimized for both desktop and mobile use.
