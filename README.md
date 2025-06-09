@@ -1,8 +1,9 @@
-<h1 align="center">🤖 Chatbot-AI</h1>
+# 🤖 Chatbot-AI
 
-<p align="center">
-A sleek, responsive AI chatbot built with React, AWS Amplify, and OpenAI. Clean UI inspired by Amazon, optimized for all devices.
-</p>
+## Overview
+A sleek, responsive AI chatbot web application built with React, AWS Amplify for authentication, and OpenAI for real-time AI responses. Designed with a clean, Amazon-inspired UI and optimized for both desktop and mobile use.
+
+---
 ## 🌐 Live Demo
 
 👉 [View the deployed app](https://main.d3aa51l1wq81s7.amplifyapp.com)
