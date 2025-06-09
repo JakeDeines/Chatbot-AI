@@ -1,6 +1,6 @@
 # 🤖 Chatbot-AI
 
-![Amplify Deploy](https://img.shields.io/github/deployments/JakeDeines/Chatbot-AI/main?label=Amplify%20Deploy&logo=aws-amplify&style=for-the-badge)
+![Hosted on AWS Amplify](https://img.shields.io/badge/Hosted%20on-AWS%20Amplify-orange?style=for-the-badge&logo=aws-amplify)
 ![Stars](https://img.shields.io/github/stars/JakeDeines/Chatbot-AI?style=for-the-badge&logo=github)
 ![Built with React](https://img.shields.io/badge/Built%20with-React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![Powered by OpenAI](https://img.shields.io/badge/Powered%20by-OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
