@@ -13,11 +13,20 @@ A sleek, responsive AI chatbot web application built with React, AWS Amplify for
 
 ## ✨ Features
 
-- 🔐 Secure user login via AWS Amplify
-- 🤖 Real-time AI chat using OpenAI API
-- 💬 Amazon-style dark UI with gold accent theme
-- 📱 Fully responsive on mobile and desktop
-- 🧠 Modular layout and easily expandable features
+🔐 **Secure Login with AWS Cognito**  
+Users can sign up and log in through a secure Amplify-hosted login page. Sessions are handled automatically and passwords are stored safely using AWS services.
+
+💬 **Dark Theme Inspired by Amazon**  
+The app uses Amplify’s default UI components with a custom dark theme and gold highlights to give it a sleek, clean look.
+
+🤖 **Real-Time Chat Using OpenAI's API**  
+The chatbot connects to OpenAI’s language model API to generate smart, real-time responses. Messages stream in as they’re received to keep things interactive.
+
+📱 **Mobile-Friendly**  
+The layout works great on phones, tablets, and desktops — it resizes automatically without breaking.
+
+🧠 **Easy to Add New Features**  
+The app is built in React with a simple layout, so it’s easy to update or expand later (like saving chat history or adding a database).
 
 ---
 
