@@ -56,10 +56,15 @@ The app is built in React with a simple layout, so it’s easy to update or expa
 
 ## 🛠 Tech Stack
 
-- **React.js**
-- **AWS Amplify** – Authentication & Hosting
-- **Custom CSS**
-- **OpenAI Chat API**
+- **React** – Frontend UI framework
+- **AWS Amplify** – Handles authentication, hosting, and deployment
+- **Amazon Cognito** – Manages user sign-up, login, and sessions
+- **OpenAI API** – Powers real-time AI chat responses
+- **Axios** – Used to send messages to the OpenAI API
+- **React Router** – Handles in-app navigation
+- **Amplify UI Components** – Prebuilt Amazon-style components for forms and layout
+- **Font Awesome** – Icons used throughout the UI
+- **CSS** – Custom styling and responsive layout
 
 ---
 
