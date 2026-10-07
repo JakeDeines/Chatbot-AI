@@ -47,13 +47,16 @@ const Chatbot = () => {
     }
     setError('');
     try {
-      const conversationHistory = conversation
-        .map((entry) => `User: ${entry.user}\nChatbot: ${entry.chatbot}`)
-        .join('\n');
-      const prompt = `${conversationHistory}\nUser: ${userQuestion}\nChatbot:`;
+      const messages = [
+        ...conversation.flatMap((entry) => [
+          { role: 'user', content: entry.user },
+          { role: 'assistant', content: entry.chatbot },
+        ]),
+        { role: 'user', content: userQuestion },
+      ];
       const openaiResponse = await axios.post(
-        'https://api.openai.com/v1/engines/gpt-3.5-turbo-instruct/completions',
-        { prompt, max_tokens: 200 },
+        'https://api.openai.com/v1/chat/completions',
+        { model: 'gpt-4.1-mini', messages, max_tokens: 200 },
         {
           headers: {
             'Content-Type': 'application/json',
@@ -61,7 +64,7 @@ const Chatbot = () => {
           },
         }
       );
-      const chatbotResponse = openaiResponse.data.choices[0].text.trim();
+      const chatbotResponse = openaiResponse.data.choices[0].message.content.trim();
       setConversation((prev) => [
         ...prev,
         { user: userQuestion, chatbot: chatbotResponse },
